@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+.formcategory {
+	display: block;
+	width: 700px;
+	height: 80%;
+	margin: 15px auto;
+	background-color: rgba(100, 200, 155, 0.6);
+	text-align: center;
+	border-radius: 10px;
+}
