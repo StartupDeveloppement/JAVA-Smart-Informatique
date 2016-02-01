@@ -72,9 +72,9 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
     }
 
     @Override
-    public List<Produit> produitsParCategorie(Long idCat) {
+    public List<Produit> produitsParCategorie(String nomCategorie) {
         Query req = em.createQuery("select p from Produit p where p.categorie.idCategorie =:x");
-        req.setParameter("x", idCat);
+        req.setParameter("x", "%"+nomCategorie+"%");
         return req.getResultList();
     }
 

@@ -46,8 +46,8 @@ public class TestCatalogue {
         try {
             IAdminCategorieCatalogueMetier metier = (IAdminCategorieCatalogueMetier) applicationContext.getBean("metier");
             List<Produit> prods1 = metier.listProduits();
-            metier.ajouterProduit(new Produit("HP45ERT", "HP789", 6000, 50, true, "image1.jpg"), 1L);
-            metier.ajouterProduit(new Produit("AZERTY", "ACER789", 12000, 42, true, "image.jpg"), 1L);
+            metier.ajouterProduit(new Produit("HP45ERT", "HP789", 6000, 50, true, null), 1L);
+            metier.ajouterProduit(new Produit("AZERTY", "ACER789", 12000, 42, true, null), 1L);
             List<Produit> prods2 = metier.listProduits();
             assertTrue(prods1.size()+2 == prods2.size());
             

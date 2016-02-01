@@ -23,7 +23,7 @@ public interface ICatalogueDAO {
     public Long ajouterProduit(Produit p, Long idCat);
     public List<Produit> listProduits();
     public List<Produit> produitsParMotCle(String mc);
-    public List<Produit> produitsParCategorie(Long idCat);
+    public List<Produit> produitsParCategorie(String nomCategorie);
     public List<Produit> produitsSelectionnes();
     public Produit getProduit(Long idP);
     public void supprimerProduit(Long idP);

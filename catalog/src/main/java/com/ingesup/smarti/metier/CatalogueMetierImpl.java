@@ -63,9 +63,9 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     }
 
     @Override
-    public List<Produit> produitsParCategorie(Long idCat) {
+    public List<Produit> produitsParCategorie(String nomCategorie) {
         // TODO Auto-generated method stub
-        return dao.produitsParCategorie(idCat);
+        return dao.produitsParCategorie(nomCategorie);
     }
 
     @Override

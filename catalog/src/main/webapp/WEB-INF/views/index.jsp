@@ -20,6 +20,11 @@
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tr>
+					<td>ID Catégorie</td>
+					<td><f:input path="idCategorie" /></td>
+					<td><f:errors path="idCategorie" cssClass="errors"></f:errors></td>
+				</tr>
+				<tr>
 					<td>Nom Catégorie</td>
 					<td><f:input path="nomCategorie" /></td>
 					<td><f:errors path="nomCategorie" cssClass="errors"></f:errors></td>
@@ -31,8 +36,12 @@
 				</tr>
 				<tr>
 					<td>Photo</td>
+					<td>
+					<c:if test="${categorie.idCategorie!=null}">
+					<img src="photoCat?idCat=${categorie.idCategorie}"/>
+					</c:if>
+					</td>
 					<td><input type="file" name="file" /></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Save" /></td>
@@ -46,11 +55,12 @@
 <br>
 <br>
 
+
 <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formcategory text-center bg-info">
 		<div id="">
-		<f:form modelAttribute="categorie" action="deleteCat" method="post"
+		<f:form modelAttribute="categorie" action="saveCat" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tr>
@@ -64,7 +74,8 @@
 							<td>${cat.nomCategorie}</td>
 							<td>${cat.description}</td>
 							<td><img src="photoCat?idCat=${cat.idCategorie}"></td>
-							<td><input type="submit" value="Delete" /></td>
+							<td><a href="deleteCat?idCat=${cat.idCategorie}">Delete</a></td>
+							<td><a href="editCat?idCat=${cat.idCategorie}">Edit</a></td>
 						</tr>
 					</c:forEach>
 				</tr>
@@ -78,14 +89,4 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 

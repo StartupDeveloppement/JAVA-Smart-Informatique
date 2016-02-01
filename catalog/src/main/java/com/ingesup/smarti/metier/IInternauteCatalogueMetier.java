@@ -20,7 +20,7 @@ public interface IInternauteCatalogueMetier {
 
     public List<Produit> produitsParMotCle(String mc);
 
-    public List<Produit> produitsParCategorie(Long idCat);
+    public List<Produit> produitsParCategorie(String nomCategorie);
 
     public List<Produit> produitsSelectionnes();
 

@@ -25,15 +25,15 @@ public class Produit implements Serializable{
     private String description;
     private double prix;
     private int quantite;
-    private boolean selected;
+    private boolean selected;						
     private String photo;
-    @ManyToOne  // un ou plusieurs produits correspondent à une cattegorie
+    @ManyToOne  // un ou plusieurs produits correspondent à private String nomPhoto;une cattegorie
     @JoinColumn(name="idCategorie")
     private Categorie categorie;
     public Long getIdProduit() {
         return idProduit;
     }
-    public void setIdProduit(Long idProduit) {
+	public void setIdProduit(Long idProduit) {
         this.idProduit = idProduit;
     }
     public String getDesignation() {

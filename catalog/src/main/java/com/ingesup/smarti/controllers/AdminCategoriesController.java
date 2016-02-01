@@ -17,8 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ingesup.smarti.dao.CatalogueDAOImpl;
 import com.ingesup.smarti.entities.Categorie;
@@ -51,6 +54,14 @@ public class AdminCategoriesController {
             c.setPhoto(file.getBytes());
             c.setNomPhoto(file.getOriginalFilename());
         }
+        if(c.getIdCategorie()!=null){
+        		if(file.isEmpty()){
+        			Categorie cat=metier.getCategorie(c.getIdCategorie());
+        			c.setPhoto(cat.getPhoto());
+        		}
+        	metier.modifierCategorie(c);
+        }
+        else
         metier.ajouterCategorie(c);
         model.addAttribute("categorie", new Categorie());
         model.addAttribute("categories", metier.listCategories());
@@ -63,23 +74,22 @@ public class AdminCategoriesController {
         Categorie c = metier.getCategorie(idCat);
         return IOUtils.toByteArray(new ByteArrayInputStream(c.getPhoto()));
     }
-
     
-//  @RequestMapping(value = "/editCat")
-//  @ResponseBody
-//  public String editCat(@Valid Categorie c, BindingResult bindingResult, Model model, MultipartFile file)throws IOException {
-//  	Long idCategorie = Integer.parseInt(request.getParameter("idCategorie"));
-//      Categorie categorie = CatalogueDAOImpl.get(idCategorie);
-//      model.addAttribute("categorie", categorie);
-//      return "index"; 
-//  }
-  
-//  @RequestMapping(value = "/deleteCat")
-//  public String deleteCategorie(@Valid Long idCat, Model model, MultipartFile file)
-//  {
-//  	metier.supprimerCategorie(idCat);
-//      return "index";
-//  }
+    @RequestMapping(value = "/editCat")
+    public String editCat(Long idCat, Model model)throws IOException{
+    	Categorie c = metier.getCategorie(idCat);
+    	model.addAttribute("categorie", c);	
+    	model.addAttribute("categories", metier.listCategories());
+    	return "index";
+    }
+    
+    @RequestMapping(value = "/deleteCat")
+    public String deleteCat(Long idCat, Model model) throws IOException {
+    	metier.supprimerCategorie(idCat);
+    	model.addAttribute("categorie", new Categorie());
+        model.addAttribute("categories", metier.listCategories());
+        return "index";
+    }
 }
 
 
