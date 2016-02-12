@@ -1,4 +1,4 @@
-package com.ingesup.smarti.entities;
+/*package com.ingesup.smarti.entities;
 
 
 
@@ -11,16 +11,12 @@ public class Panier implements Serializable {
 
     private Map<Long, LigneCommande> items = new HashMap<Long, LigneCommande>();
     
-    public void addArticle(Produit p, int quantite){
-        if(items.get(p.getIdProduit())==null){
-            LigneCommande lc = new LigneCommande();
-            lc.setProduit(p);
-            lc.setQuantite(quantite);
-            lc.setPrix(p.getPrix());
-        }
-        else {
-            LigneCommande lc = items.get(p.getIdProduit());
-            lc.setQuantite(lc.getQuantite()+quantite);
+    public void ajouterArticle(Produit produit, int quantite){
+    	LigneCommande lc = items.get(produit.getIdProduit());
+        if(lc!=null){
+        	lc.setQuantite(lc.getQuantite()+quantite);
+        } else {
+        	items.put(produit.getIdProduit(), new LigneCommande(quantite, produit));
         }
     }
     public Collection<LigneCommande> getItems(){
@@ -28,14 +24,20 @@ public class Panier implements Serializable {
     }
     public double getTotal(){
         double total = 0;
-        for (LigneCommande lc : items.values()) {
-            total += lc.getPrix()*lc.getQuantite();
+        Collection<LigneCommande> items =getItems();
+        for (LigneCommande lc : items) {
+        	total+=lc.getQuantite()*lc.getProduit().getPrix();
         }
         return total;
     }
     
     public int getSize(){
-        return items.size();
+    	int nb=0;
+    	Collection<LigneCommande> items=getItems();
+    	for(LigneCommande lc:items){
+    	nb+=lc.getQuantite();
+    	}
+    	return nb;
     }
     
     public void deleteItem(Long idProduit){
@@ -46,3 +48,4 @@ public class Panier implements Serializable {
 }
 
 
+*/

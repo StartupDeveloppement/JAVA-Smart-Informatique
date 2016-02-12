@@ -8,7 +8,8 @@ import com.ingesup.smarti.dao.ICatalogueDAO;
 import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
-import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.entities.LigneCommande;
+//import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
@@ -63,9 +64,9 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     }
 
     @Override
-    public List<Produit> produitsParCategorie(String nomCategorie) {
+    public List<Produit> produitsParCategorie(Long idCat) {
         // TODO Auto-generated method stub
-        return dao.produitsParCategorie(nomCategorie);
+        return dao.produitsParCategorie(idCat);
     }
 
     @Override
@@ -80,11 +81,11 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
         return dao.getProduit(idP);
     }
 
-    @Override
-    public Commande enregistrerCommande(Panier p, Client c) {
-        // TODO Auto-generated method stub
-        return dao.enregistrerCommande(p, c);
-    }
+//    @Override
+//    public Commande enregistrerCommande(Panier panier, Client client) {
+//        // TODO Auto-generated method stub
+//        return dao.enregistrerCommande(panier, client);
+//    }
 
     @Override
     public Long ajouterCategorie(Categorie c) {
@@ -113,6 +114,18 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     public void attribuerRole(Role r, Long userID) {
         dao.attribuerRole(r, userID);
     }
+
+	@Override
+	public Long ajouterLigneCommande(LigneCommande lc, Long idP) {
+		dao.ajouterLigneCommande(lc, idP);
+		return lc.getId();
+	}
+
+	@Override
+	public List<LigneCommande> listLignes() {
+		dao.listLignes();
+		return null;
+	}
 
 }
 

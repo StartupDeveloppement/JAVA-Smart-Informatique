@@ -12,7 +12,7 @@ import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
 import com.ingesup.smarti.entities.LigneCommande;
-import com.ingesup.smarti.entities.Panier;
+//import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
@@ -72,9 +72,9 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
     }
 
     @Override
-    public List<Produit> produitsParCategorie(String nomCategorie) {
+    public List<Produit> produitsParCategorie(Long idCat) {
         Query req = em.createQuery("select p from Produit p where p.categorie.idCategorie =:x");
-        req.setParameter("x", "%"+nomCategorie+"%");
+        req.setParameter("x", idCat);
         return req.getResultList();
     }
 
@@ -115,19 +115,33 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
         em.persist(r);
     }
 
-    @Override
-    public Commande enregistrerCommande(Panier p, Client c) {
-        em.persist(c);
-        Commande cmd = new Commande();
-        cmd.setDateCommande(new Date());
-        cmd.setItems(p.getItems()); // recuperation de la liste pour stocker
-                                    // dans la commande
-        for (LigneCommande lc : p.getItems()) {
-            em.persist(lc);
-        }
-        em.persist(cmd);
-        return cmd;
-    }
+	@Override
+	public Long ajouterLigneCommande(LigneCommande lc, Long idP) {
+		Produit p = em.find(Produit.class, idP);
+        lc.setProduit(p);
+        em.persist(lc);
+		return lc.getId();
+	}
+
+	@Override
+	public List<LigneCommande> listLignes() {
+		Query req = em.createQuery("select lc from LigneCommande lc");
+        return req.getResultList();
+	}
+
+//    @Override
+//    public Commande enregistrerCommande(Panier panier, Client client) {
+//        em.persist(client);
+//        Commande cmd = new Commande();
+//        cmd.setDateCommande(new Date());
+//        cmd.setItems(panier.getItems()); // recuperation de la liste pour stocker
+//                                    // dans la commande
+//        for (LigneCommande lc : panier.getItems()) {
+//            em.persist(lc);
+//        }
+//        em.persist(cmd);
+//        return cmd;
+//    }
 
 }
 

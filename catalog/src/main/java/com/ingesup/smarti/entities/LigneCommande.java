@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
+@Table(name="LigneCommande")
 public class LigneCommande implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,7 +34,7 @@ public class LigneCommande implements Serializable{
     public int getQuantite() {
         return quantite;
     }
-    public void setQuantite(int quantite) {
+    public void setChosen(int quantite) {
         this.quantite = quantite;
     }
     public double getPrix() {
@@ -57,11 +58,10 @@ public class LigneCommande implements Serializable{
     public LigneCommande() {
         super();
     }
-    public LigneCommande(int quantite, double prix) {
-        super();
-        this.quantite = quantite;
-        this.prix = prix;
-    }
+	public LigneCommande(int quantite) {
+		super();
+		this.quantite = quantite;
+	}
         
 }
 

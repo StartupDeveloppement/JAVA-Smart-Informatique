@@ -5,6 +5,7 @@ package com.ingesup.smarti;
 import org.testng.annotations.Test;
 
 import com.ingesup.smarti.entities.Categorie;
+import com.ingesup.smarti.entities.LigneCommande;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.metier.IAdminCategorieCatalogueMetier;
 
@@ -41,6 +42,7 @@ public class TestCatalogue {
         }
     }
 
+    
     @Test
     public void fProduits() {
         try {
@@ -56,6 +58,25 @@ public class TestCatalogue {
             assertTrue(false, e.getMessage());
         }
     }
+    
+    
+    @Test
+    public void fLignes() {
+        try {
+            IAdminCategorieCatalogueMetier metier = (IAdminCategorieCatalogueMetier) applicationContext.getBean("metier");
+            List<LigneCommande> ligne1 = metier.listLignes();
+            metier.ajouterLigneCommande(new LigneCommande(50), 1L);
+            metier.ajouterLigneCommande(new LigneCommande(2), 1L);
+            List<LigneCommande> ligne2 = metier.listLignes();
+            assertTrue(ligne1.size()+2 == ligne2.size());
+            
+        } catch (Exception e) {
+
+            assertTrue(false, e.getMessage());
+        }
+    }
+    
+    
     @AfterTest
     public void afterTest() {
     }

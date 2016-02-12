@@ -12,54 +12,56 @@
 </head>
 <body>
 
-<div class="container table-responsive">
+	<div class="container table-responsive">
 		<div class="row">
-		<div class="col-xs-12 forminternaute text-center bg-info">
-			<h3> List Categorie </h3> <br>
-			<f:form modelAttribute="internaute" action="produitParCategorie"  method="post"
+		<div class="col-xs-12 forminter text-center bg-info">
+			<f:form modelAttribute="internaute" action="chercher"  method="get"
 			enctype="multipart/form-data">
-			<table class="table table-bordered">
-			<c:forEach items="${categories}" var="cat">
-			<tr>
-			<td><a href="#" >${cat.nomCategorie}</a></td>
-			</tr>
-			</c:forEach>
-			</table>
-	</f:form>
-		</div>
+			Mot Clé:<input type="text" name="motCle" value="${mc}">
+			<input type="submit" value="OK">
+			</f:form> 				
+	</div>
 			
 		</div>
 	</div>
+	
+	
+<br>
 <br>
 <br>
 
-<div class="container table-responsive">
+	<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminter text-center bg-info">
+			<f:form modelAttribute="internaute" action="produitParCat"  method="get"
+			enctype="multipart/form-data">
+			Categories:<select name="nomCat" path="categorie.idCategorie" items="${categories}" itemValue="idCategorie" itemLabel="nomCategorie">
+			<c:forEach items="${categories}" var="cat">
+			<option value="${cat.idCategorie}"
+				<c:if test="${cat.idCategorie==nomCat}">selected</c:if>
+			> 
+			${cat.nomCategorie}</option>
+			</c:forEach>
+			</select>
+			<input type="submit" value="OK">
+			</f:form>
+			
+		</div>	
+		</div>
+		</div>  
+		
+<br>
+<br>
+<br>
+	
+				
+		<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
-			<f:form modelAttribute="internaute" action="produitParCategorie"  method="post"
-			enctype="multipart/form-data">
-			<table class="table table-bordered">
-<tr>
-				<td>Produit par mot clé :</td>
-				<td><form:select path="produit" items="${produits}"
-					multiple="true" /></td>
-				<td><form:errors path="produit" cssClass="error" /></td>
-			</tr>
-</table>
-	</f:form>
-		</div>
-			
-		</div>
-	</div>
-<div class="container table-responsive">
-		<div class="row">
-		<div class="col-xs-12 formproduit text-center bg-info">
-		<div id="">
-		<h3> List Produit </h3> <br>
-		<f:form modelAttribute="internaute" action="produitParCategorie" method="post"
-			enctype="multipart/form-data">
-			<table class="table table-bordered">
-				<tr>
+		<f:form modelAttribute="internaute" action="ajouterPanier" method="post" 
+		enctype="multipart/form-data">
+					<table class="table table-bordered">
+					<tr>
 					<th>ID</th>
 					<th>DESIGNATION</th>
 					<th>DESCRIPTION</th>
@@ -78,19 +80,52 @@
 							<td>${pro.quantite}</td>
 							<td>${pro.selected}</td>
 							<td><img src="photoPro?idP=${pro.idProduit}"></td>
-						</tr>
+							<td colspan="2">
+					<%-- <input type="hidden" value="${pro.idProduit}" name="idProduit"> --%>
+					<input type="text" value="1" name="quantite">
+					<input type="submit" value="Ajouter au panier">
 					</c:forEach>
-					<!--<tr>
-					<td>
-					<a href="produitsParCat?idCat=${cat.idCategorie }"> Chercher Produit par categorie</a>
-					</td>
-					</tr>  -->
-			</table>
+				</tr>
+				</table>
 			</f:form>
+		</div>	
+		</div>
+		</div> 
+		
+		
+<br>
+<br>
+<br>
+
+
+<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminternaute text-center bg-info">
+		<f:form modelAttribute="lignecommande" action="ajouterPanier" method="post" 
+		enctype="multipart/form-data">
+		<table class="table table-bordered">
+		<tr>
+		<!-- <th>QUANTITE</th> -->
+					<th>ID</th>
+					<th>PRIX</th>
+					<th>CHOSEN</th>
+					<!-- <th>ID COMMANDE</th> -->
+					<th>ID PRODUIT</th>
+		<c:forEach items="${lignecommandes}" var="lc">
+			<tr>
+				<td>${lc.id}
+				<td>${lc.produit.prix}</td>
+				<td>${lc.quantite}</td>
+				<td>${lc.commande.idCommande}
+				<td>${lc.produit.idProduit}
+			</tr>
+		</c:forEach>
+		</table>
+		</f:form>
 		</div>
 		</div>
-		</div>
-</div>
+</div> 
+
 
 						
 </body>
