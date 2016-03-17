@@ -14,55 +14,67 @@ import javax.persistence.Table;
 @Entity
 @Table(name="LigneCommande")
 public class LigneCommande implements Serializable{
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="idProduit")
+    private Produit produit;
     private int quantite;
     private double prix;
     @ManyToOne
-    @JoinColumn(name="idCommande")
+	@JoinColumn(name="idCommande")
     private Commande commande;
-    @ManyToOne
-    @JoinColumn(name="idProduit")
-    private Produit produit;
+
+    public LigneCommande() {
+    }
+
+    public LigneCommande(Produit produit, int quantite, double prix) {
+        this.produit = produit;
+        this.quantite = quantite;
+        this.prix = prix;
+    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public int getQuantite() {
-        return quantite;
-    }
-    public void setChosen(int quantite) {
-        this.quantite = quantite;
-    }
-    public double getPrix() {
-        return prix;
-    }
-    public void setPrix(double prix) {
-        this.prix = prix;
-    }
-    public Commande getCommande() {
-        return commande;
-    }
-    public void setCommande(Commande commande) {
-        this.commande = commande;
-    }
+
     public Produit getProduit() {
         return produit;
     }
+
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
-    public LigneCommande() {
-        super();
+
+    public int getQuantite() {
+        return quantite;
     }
-	public LigneCommande(int quantite) {
-		super();
-		this.quantite = quantite;
-	}
-        
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
 }
 
 

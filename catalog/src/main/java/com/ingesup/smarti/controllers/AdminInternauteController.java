@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ingesup.smarti.entities.Categorie;
-import com.ingesup.smarti.entities.Client;
-import com.ingesup.smarti.entities.LigneCommande;
-//import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.metier.IInternauteCatalogueMetier;
 
@@ -34,7 +32,7 @@ public class AdminInternauteController {
 	
 	
 	@RequestMapping(value = "/internaute")
-	public String user(Model model){
+	public String internaute(Model model){
 		model.addAttribute("categories", metier.listCategories());
 		model.addAttribute("produits", metier.listProduits());
 		return "internaute";
@@ -71,18 +69,13 @@ public class AdminInternauteController {
 	}
 	
 	
-
-	@RequestMapping(value="/ajouterPanier")
-	public String ajouterPanier(@Valid LigneCommande lc, BindingResult bindingResult, Model model, MultipartFile file)
-            throws IOException{
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("lignecommandes",metier.listLignes());
-            return "interaute";
-        }
-		metier.ajouterLigneCommande(lc, lc.getProduit().getIdProduit());
-        model.addAttribute("LigneCommande", new LigneCommande());
-        model.addAttribute("lignecommandes", metier.listLignes());
-        return "internaute";
+	@RequestMapping(value="/ajouter")
+	public String ajouterItem(Produit p, Model model){	
+		Panier panier = new Panier();
+		panier.addArticle(p, 1);
+		model.addAttribute("currentPanier", panier);
+		model.addAttribute("panier", panier.getSize());
+		return("internaute");
 	}
 	
 }

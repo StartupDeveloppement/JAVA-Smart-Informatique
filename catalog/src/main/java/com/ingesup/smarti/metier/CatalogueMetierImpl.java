@@ -9,7 +9,7 @@ import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
 import com.ingesup.smarti.entities.LigneCommande;
-//import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
@@ -81,11 +81,11 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
         return dao.getProduit(idP);
     }
 
-//    @Override
-//    public Commande enregistrerCommande(Panier panier, Client client) {
-//        // TODO Auto-generated method stub
-//        return dao.enregistrerCommande(panier, client);
-//    }
+    @Override
+    public Commande enregistrerCommande(Panier panier, Client client) {
+        // TODO Auto-generated method stub
+        return dao.enregistrerCommande(panier, client);
+    }
 
     @Override
     public Long ajouterCategorie(Categorie c) {
@@ -114,19 +114,6 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     public void attribuerRole(Role r, Long userID) {
         dao.attribuerRole(r, userID);
     }
-
-	@Override
-	public Long ajouterLigneCommande(LigneCommande lc, Long idP) {
-		dao.ajouterLigneCommande(lc, idP);
-		return lc.getId();
-	}
-
-	@Override
-	public List<LigneCommande> listLignes() {
-		dao.listLignes();
-		return null;
-	}
-
 }
 
 

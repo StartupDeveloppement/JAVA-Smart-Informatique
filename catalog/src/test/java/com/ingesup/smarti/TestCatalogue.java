@@ -59,7 +59,7 @@ public class TestCatalogue {
         }
     }
     
-    
+/*    
     @Test
     public void fLignes() {
         try {
@@ -75,7 +75,7 @@ public class TestCatalogue {
             assertTrue(false, e.getMessage());
         }
     }
-    
+    */
     
     @AfterTest
     public void afterTest() {

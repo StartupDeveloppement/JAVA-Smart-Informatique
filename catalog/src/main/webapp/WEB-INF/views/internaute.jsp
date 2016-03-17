@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
+	<link rel="shortcut icon"
+	href="<%=request.getContextPath()%>/resources/images/panier.jpg">
 </head>
 <body>
 
@@ -58,75 +60,40 @@
 		<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
-		<f:form modelAttribute="internaute" action="ajouterPanier" method="post" 
+		<f:form modelAttribute="produit" action="ajouter" method="get" 
 		enctype="multipart/form-data">
 					<table class="table table-bordered">
-					<tr>
-					<th>ID</th>
-					<th>DESIGNATION</th>
-					<th>DESCRIPTION</th>
-					<th>CATEGORIE</th>
-					<th>PRIX</th>
-					<th>QUANTITE</th>
-					<th>SELECTED</th>
-					<th>PHOTO</th>
-					<c:forEach items="${produits}" var="pro">
-						<tr>
-							<td>${pro.idProduit}</td>
-							<td>${pro.designation}</td>
-							<td>${pro.description}</td>
-							<td>${pro.categorie.nomCategorie}</td>
-							<td>${pro.prix}</td>
-							<td>${pro.quantite}</td>
-							<td>${pro.selected}</td>
-							<td><img src="photoPro?idP=${pro.idProduit}"></td>
-							<td colspan="2">
-					<%-- <input type="hidden" value="${pro.idProduit}" name="idProduit"> --%>
-					<input type="text" value="1" name="quantite">
-					<input type="submit" value="Ajouter au panier">
-					</c:forEach>
+				
+		<tr>
+			<th>DESIGNATION</th>
+			<th>DESCRIPTION</th>
+			<th>CATEGORIE</th>
+			<th>PRIX</th>
+			<th>PHOTO</th>
 				</tr>
+		<c:forEach items="${produits}" var="pro">
+			<tr>
+				<td>${pro.designation}</td>
+				<td>${pro.description}</td>
+				<td>${pro.categorie.nomCategorie}</td>
+				<td>${pro.prix}</td>
+				<td><img src="photoPro?idP=${pro.idProduit}"></td>
+				<td>
+				<input type="submit" value="Add to Cart">
+				</td>
+			</tr>
+		</c:forEach>
 				</table>
-			</f:form>
+		</f:form>
 		</div>	
 		</div>
+		${panier}
 		</div> 
 		
 		
 <br>
 <br>
 <br>
-
-
-<div class="container table-responsive">
-		<div class="row">
-		<div class="col-xs-12 forminternaute text-center bg-info">
-		<f:form modelAttribute="lignecommande" action="ajouterPanier" method="post" 
-		enctype="multipart/form-data">
-		<table class="table table-bordered">
-		<tr>
-		<!-- <th>QUANTITE</th> -->
-					<th>ID</th>
-					<th>PRIX</th>
-					<th>CHOSEN</th>
-					<!-- <th>ID COMMANDE</th> -->
-					<th>ID PRODUIT</th>
-		<c:forEach items="${lignecommandes}" var="lc">
-			<tr>
-				<td>${lc.id}
-				<td>${lc.produit.prix}</td>
-				<td>${lc.quantite}</td>
-				<td>${lc.commande.idCommande}
-				<td>${lc.produit.idProduit}
-			</tr>
-		</c:forEach>
-		</table>
-		</f:form>
-		</div>
-		</div>
-</div> 
-
-
 						
 </body>
 </html>

@@ -6,7 +6,7 @@ import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
 import com.ingesup.smarti.entities.LigneCommande;
-//import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
@@ -32,10 +32,8 @@ public interface ICatalogueDAO {
     
     public void ajouterUser(User u);
     public void attribuerRole(Role r, Long userID);
-    
-    public Long ajouterLigneCommande(LigneCommande lc, Long idP);
-    public List<LigneCommande> listLignes();
-    //public Commande enregistrerCommande(Panier panier, Client client);
+
+    public Commande enregistrerCommande(Panier panier, Client client);
 
 }
 
