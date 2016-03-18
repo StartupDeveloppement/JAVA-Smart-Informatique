@@ -116,17 +116,17 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
     }
 
     @Override
-    public Commande enregistrerCommande(Panier panier, Client client) {
-        em.persist(client);
-        Commande cmd = new Commande();
-        cmd.setDateCommande(new Date());
-        cmd.setItems(panier.getItems()); // recuperation de la liste pour stocker
-                                    // dans la commande
-        for (LigneCommande lc : panier.getItems()) {
-            em.persist(lc);
-        }
-        em.persist(cmd);
-        return cmd;
+    public Commande enregistrerCommande(Panier p, Client c) {
+    	em.persist(c);
+		Commande cmd = new Commande();
+		cmd.setClient(c);
+		cmd.setDateCommande(new Date());
+		cmd.setItems(p.getItems());
+		for(LigneCommande lc:p.getItems()){
+			em.persist(lc);
+		}
+		em.persist(cmd);
+		return cmd;
     }
 
 }

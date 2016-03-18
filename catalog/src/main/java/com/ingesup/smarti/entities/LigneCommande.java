@@ -1,3 +1,4 @@
+
 package com.ingesup.smarti.entities;
 
 
@@ -23,18 +24,21 @@ public class LigneCommande implements Serializable{
     private Produit produit;
     private int quantite;
     private double prix;
-    @ManyToOne
-	@JoinColumn(name="idCommande")
-    private Commande commande;
+//    @ManyToOne
+//	@JoinColumn(name="idCommande")
+//    private Commande commande;
 
+    public LigneCommande( int quantite, double prix) {
+		super();
+		
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+    
     public LigneCommande() {
-    }
-
-    public LigneCommande(Produit produit, int quantite, double prix) {
-        this.produit = produit;
-        this.quantite = quantite;
-        this.prix = prix;
-    }
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
     public Long getId() {
         return id;
@@ -68,13 +72,12 @@ public class LigneCommande implements Serializable{
         this.prix = prix;
     }
 
-    public Commande getCommande() {
-        return commande;
-    }
-
-    public void setCommande(Commande commande) {
-        this.commande = commande;
-    }
+//    public Commande getCommande() {
+//        return commande;
+//    }
+//
+//    public void setCommande(Commande commande) {
+//        this.commande = commande;
+//    }
 }
-
 

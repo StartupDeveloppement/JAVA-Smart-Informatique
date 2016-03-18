@@ -10,19 +10,35 @@ import java.util.Map;
 public class Panier implements Serializable {
 	private Map<Long, LigneCommande> items = new HashMap<Long, LigneCommande>();
     
-	public void addArticle(Produit produit, int quantite)
-	{
-		if(items.get(produit.getIdProduit())==null)
-				{
-					LigneCommande lc = new LigneCommande();
-					lc.setProduit(produit);
-					lc.setQuantite(quantite);
-					lc.setPrix(produit.getPrix());
-			
-				}else{
-					LigneCommande lc = items.get(produit.getIdProduit());
-					lc.setQuantite(lc.getQuantite()+quantite);
-				}
+	private Produit produit;
+	private int quantite;
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+	
+	public void addItem(Produit p, int quantite) {
+		LigneCommande lc = items.get(p.getIdProduit());
+		if (lc == null) {
+			LigneCommande art = new LigneCommande();
+			art.setProduit(p);
+			art.setQuantite(quantite);
+			art.setPrix(p.getPrix());
+			items.put(p.getIdProduit(), art);
+		} else {
+			lc.setQuantite(lc.getQuantite() + quantite);
+		}
 	}
 	
 	public Collection<LigneCommande> getItems()

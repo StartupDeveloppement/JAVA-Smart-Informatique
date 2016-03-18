@@ -19,11 +19,17 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idCommande;
     private Date dateCommande;
-    @OneToMany(mappedBy="commande")
-    private Collection<LigneCommande> items;
     @ManyToOne
     @JoinColumn(name="idClient")
     private Client client;
+    @OneToMany
+	@JoinColumn(name = "idCommande")
+	private Collection<LigneCommande> ligneCommandes;
+    
+    public Commande() {
+        super();
+    }
+    
     public Long getIdCommande() {
         return idCommande;
     }
@@ -36,20 +42,17 @@ public class Commande implements Serializable {
     public void setDateCommande(Date dateCommande) {
         this.dateCommande = dateCommande;
     }
-    public Collection<LigneCommande> getItems() {
-        return items;
+    public Collection<LigneCommande> getLigneCommandes() {
+        return ligneCommandes;
     }
-    public void setItems(Collection<LigneCommande> items) {
-        this.items = items;
+    public void setItems(Collection<LigneCommande> ligneCommandes) {
+        this.ligneCommandes = ligneCommandes;
     }
     public Client getClient() {
         return client;
     }
     public void setClient(Client client) {
         this.client = client;
-    }
-    public Commande() {
-        super();
     }
     
 }

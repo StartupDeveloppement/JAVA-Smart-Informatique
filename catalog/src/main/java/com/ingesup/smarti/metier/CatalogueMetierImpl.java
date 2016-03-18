@@ -82,9 +82,9 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     }
 
     @Override
-    public Commande enregistrerCommande(Panier panier, Client client) {
+    public Commande enregistrerCommande(Panier p, Client c) {
         // TODO Auto-generated method stub
-        return dao.enregistrerCommande(panier, client);
+        return dao.enregistrerCommande(p, c);
     }
 
     @Override

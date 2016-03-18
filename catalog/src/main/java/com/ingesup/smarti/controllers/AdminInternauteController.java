@@ -33,6 +33,9 @@ public class AdminInternauteController {
 	
 	@RequestMapping(value = "/internaute")
 	public String internaute(Model model){
+		if (model.asMap().get("panier") == null) {
+			model.addAttribute("panier", new Panier());
+		}
 		model.addAttribute("categories", metier.listCategories());
 		model.addAttribute("produits", metier.listProduits());
 		return "internaute";
@@ -57,7 +60,6 @@ public class AdminInternauteController {
 		model.addAttribute("categories", metier.listCategories());
 		return "internaute";
 	}
-	
 
 	
 	@RequestMapping(value = "photoPro", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -69,13 +71,19 @@ public class AdminInternauteController {
 	}
 	
 	
-	@RequestMapping(value="/ajouter")
-	public String ajouterItem(Produit p, Model model){	
-		Panier panier = new Panier();
-		panier.addArticle(p, 1);
-		model.addAttribute("currentPanier", panier);
-		model.addAttribute("panier", panier.getSize());
-		return("internaute");
+	@RequestMapping("/ajouterAuPanier")
+	public String ajouterAuPanier(@RequestParam Long idProduit,
+			@RequestParam int quantite, Model model) {
+		Panier p = null;
+		if (model.asMap().get("panier") == null) {
+			p = new Panier();
+			model.addAttribute("panier", p);
+		} else
+			p = (Panier) model.asMap().get("panier");
+		p.addItem(metier.getProduit(idProduit), quantite);
+		model.addAttribute("categories", metier.listCategories());
+		model.addAttribute("produits", metier.produitsSelectionnes());
+		return "internaute";
 	}
 	
 }

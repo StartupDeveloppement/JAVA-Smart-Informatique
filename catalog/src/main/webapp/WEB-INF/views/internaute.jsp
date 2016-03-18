@@ -8,9 +8,10 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
-	<link rel="shortcut icon"
-	href="<%=request.getContextPath()%>/resources/images/panier.jpg">
+	<script type="text/javascript" src="/resources/jquery/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="/resources/js/panier.js"></script>
 </head>
 <body>
 
@@ -51,7 +52,48 @@
 		</div>	
 		</div>
 		</div>  
-		
+	
+<br>
+<br>
+<br>
+	
+	
+	<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminternaute text-center bg-info">
+		<form action="ajouterAuPanier">
+		<c:if test="${panier.size!=0}">
+		<table class="table table-bordered">
+			<tr>
+				<th>ID</th>
+				<th>Désignation</th>
+				<th>Prix</th>
+				<th>Quantité</th>
+				<th>Montant</th>
+			</tr>
+			<c:forEach items="${panier.items}" var="art">
+				<tr>
+					<td>${art.produit.idProduit}</td>
+					<td>${art.produit.designation}</td>
+					<td>${art.produit.prix}</td>
+					<td>${art.quantite}</td>
+					<td>${art.quantite*art.produit.prix}</td>
+				</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="4">Total</td>
+				<td>${panier.total}</td>
+				<td colspan="4">Size</td>
+				<td>${panier.size}</td>
+			</tr>
+		</table>
+	</c:if>
+</form>
+</div>
+</div>
+</div>
+
+	
 <br>
 <br>
 <br>
@@ -60,9 +102,7 @@
 		<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
-		<f:form modelAttribute="produit" action="ajouter" method="get" 
-		enctype="multipart/form-data">
-					<table class="table table-bordered">
+		<table class="table table-bordered">
 				
 		<tr>
 			<th>DESIGNATION</th>
@@ -78,16 +118,27 @@
 				<td>${pro.categorie.nomCategorie}</td>
 				<td>${pro.prix}</td>
 				<td><img src="photoPro?idP=${pro.idProduit}"></td>
-				<td>
-				<input type="submit" value="Add to Cart">
-				</td>
+				<td colspan="2">
+						<form action="ajouterAuPanier">
+							<input type="hidden" value="${pro.idProduit}" name="idProduit">
+							<input type="text" value="1" name="quantite"> <input
+								type="submit" value="Ajouter au panier">
+						</form>
 			</tr>
 		</c:forEach>
-				</table>
-		</f:form>
+		</table>
 		</div>	
 		</div>
-		${panier}
+		<td>
+			<img alt="" src="/resources/images/panier.jpg"/></td>
+		</td> 
+		<tr>
+			<td colspan="2">
+			<img id="imgPanier" src="/resources/images/panier.jpg" onclick="affichePanier()"/>
+			</td> 
+		</tr>
+		<td>
+		</td>
 		</div> 
 		
 		

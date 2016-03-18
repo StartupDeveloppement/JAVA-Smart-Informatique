@@ -37,3 +37,16 @@
 	text-align: center;
 	border-radius: 10px;
 }
+#imgPanier {
+	cursor: pointer;
+}
+#panier table th{ 
+	border:1px dottedgray; 
+	background: pink; 
+	padding: 5px; 
+	} 
+#panier table td{ 
+	border:1px dottedgray; 
+	background: white; 
+	padding: 5px; 
+	} 

@@ -33,7 +33,7 @@ public interface ICatalogueDAO {
     public void ajouterUser(User u);
     public void attribuerRole(Role r, Long userID);
 
-    public Commande enregistrerCommande(Panier panier, Client client);
+    public Commande enregistrerCommande(Panier p, Client c);
 
 }
 

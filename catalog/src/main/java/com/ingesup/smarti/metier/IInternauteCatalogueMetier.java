@@ -27,7 +27,7 @@ public interface IInternauteCatalogueMetier {
 
     public Produit getProduit(Long idP);
 
-    public Commande enregistrerCommande(Panier panier, Client client);
+    public Commande enregistrerCommande(Panier p, Client c);
 }
 
 
