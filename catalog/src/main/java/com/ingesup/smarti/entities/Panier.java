@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Panier implements Serializable {
+	
 	private Map<Long, LigneCommande> items = new HashMap<Long, LigneCommande>();
-    
 	private Produit produit;
 	private int quantite;
 	public Produit getProduit() {
@@ -27,7 +27,7 @@ public class Panier implements Serializable {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
-	
+
 	public void addItem(Produit p, int quantite) {
 		LigneCommande lc = items.get(p.getIdProduit());
 		if (lc == null) {
@@ -40,35 +40,25 @@ public class Panier implements Serializable {
 			lc.setQuantite(lc.getQuantite() + quantite);
 		}
 	}
-	
-	public Collection<LigneCommande> getItems()
-	{
+
+	public Collection<LigneCommande> getItems() {
 		return items.values();
 	}
-	
-	public double getTotal()
-	{
+
+	public int getSize() {
+		return items.size();
+	}
+
+	public double getTotal() {
 		double total = 0;
-		
-		for(LigneCommande lc : items.values())
-		{
-			total+=lc.getPrix()*lc.getQuantite();
+		for (LigneCommande lc : items.values()) {
+			total += lc.getPrix() * lc.getQuantite();
 		}
 		return total;
 	}
-	
-	public int getSize()
-	{
-		return items.size();
-	}
-	
-	
-	
-	public void deleteItem(Long idProduit)
-	
-	{
-		items.remove(idProduit);
-		
+
+	public void deleteItem(Long idproduit) {
+		items.remove(idproduit);
 	}
 }
 

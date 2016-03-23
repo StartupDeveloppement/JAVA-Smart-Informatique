@@ -15,10 +15,25 @@
 </head>
 <body>
 
-	<div class="container table-responsive">
+<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminter text-right bg-info">
+<table class="table table-bordered">
+<tr>
+<td><a href="<%=request.getContextPath()%>/adminInt/panier" class="right_table_btn btn btn_reverse floatright">Panier</a></td>
+<td colspan="4">Total</td>
+<td>${panier.total}</td>
+</tr>
+</table>
+</div>
+			
+		</div>
+	</div>
+
+<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminter text-center bg-info">
-			<f:form modelAttribute="internaute" action="chercher"  method="get"
+			<f:form modelAttribute="internaute" action="chercher"  method="post"
 			enctype="multipart/form-data">
 			Mot Clé:<input type="text" name="motCle" value="${mc}">
 			<input type="submit" value="OK">
@@ -57,49 +72,17 @@
 <br>
 <br>
 	
-	
-	<div class="container table-responsive">
-		<div class="row">
-		<div class="col-xs-12 forminternaute text-center bg-info">
-		<form action="ajouterAuPanier">
-		<c:if test="${panier.size!=0}">
-		<table class="table table-bordered">
-			<tr>
-				<th>ID</th>
-				<th>Désignation</th>
-				<th>Prix</th>
-				<th>Quantité</th>
-				<th>Montant</th>
-			</tr>
-			<c:forEach items="${panier.items}" var="art">
-				<tr>
-					<td>${art.produit.idProduit}</td>
-					<td>${art.produit.designation}</td>
-					<td>${art.produit.prix}</td>
-					<td>${art.quantite}</td>
-					<td>${art.quantite*art.produit.prix}</td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="4">Total</td>
-				<td>${panier.total}</td>
-				<td colspan="4">Size</td>
-				<td>${panier.size}</td>
-			</tr>
-		</table>
-	</c:if>
-</form>
-</div>
-</div>
-</div>
 
 	
+		<tr>
+			<img alt="" src="/resources/images/panier.jpg"/></td>
+		</tr> 
+	
 <br>
 <br>
 <br>
 	
-				
-		<div class="container table-responsive">
+	<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
 		<table class="table table-bordered">
@@ -119,7 +102,8 @@
 				<td>${pro.prix}</td>
 				<td><img src="photoPro?idP=${pro.idProduit}"></td>
 				<td colspan="2">
-						<form action="ajouterAuPanier">
+						<form modelAttribute="internaute" action="panier"  method="get"
+			enctype="multipart/form-data">
 							<input type="hidden" value="${pro.idProduit}" name="idProduit">
 							<input type="text" value="1" name="quantite"> <input
 								type="submit" value="Ajouter au panier">
@@ -129,22 +113,9 @@
 		</table>
 		</div>	
 		</div>
-		<td>
-			<img alt="" src="/resources/images/panier.jpg"/></td>
-		</td> 
-		<tr>
-			<td colspan="2">
-			<img id="imgPanier" src="/resources/images/panier.jpg" onclick="affichePanier()"/>
-			</td> 
-		</tr>
-		<td>
-		</td>
-		</div> 
-		
-		
+		</div>
 <br>
 <br>
-<br>
-						
+<br>	
 </body>
 </html>
