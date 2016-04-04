@@ -36,7 +36,7 @@
 					<td>${art.quantite}</td>
 					<td>${art.produit.prix}</td>
 					<td>${art.quantite*art.produit.prix}</td>
-					<td><a href="<%=request.getContextPath()%>/adminInt/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
+					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
@@ -56,7 +56,7 @@
 <table class="table table-bordered">
 <tr>
  	 <td colspan="7">
-         <a href="<%=request.getContextPath()%>/adminInt/internaute" class="left_table_btn btn btn_reverse floatleft">continue shopping</a>
+         <a href="<%=request.getContextPath()%>/internaute" class="left_table_btn btn btn_reverse floatleft">continue shopping</a>
      </td>
 </tr>    
 

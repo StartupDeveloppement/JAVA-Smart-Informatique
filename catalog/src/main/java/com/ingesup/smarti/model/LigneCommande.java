@@ -1,7 +1,12 @@
 package com.ingesup.smarti.model;
 
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
+
 import com.ingesup.smarti.entities.Produit;
 
+//@Entity
+//@Table(name="LigneCommande")
 public class LigneCommande {
 
 	private Produit produit; 

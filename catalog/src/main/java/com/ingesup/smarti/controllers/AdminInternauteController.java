@@ -3,33 +3,35 @@ package com.ingesup.smarti.controllers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
+//import java.util.List;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+//import javax.servlet.http.HttpSession;
+//import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.ui.ModelMap;
+//import org.springframework.validation.BindingResult;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+//import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.ingesup.smarti.entities.Categorie;
+//import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.model.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.metier.IInternauteCatalogueMetier;
 
 @Controller
-@RequestMapping(value = "/adminInt")
+//@RequestMapping(value = "/adminInt")
+@SessionAttributes("panier") 
 public class AdminInternauteController {
 	
 	@Autowired
@@ -38,11 +40,14 @@ public class AdminInternauteController {
 	
 	@RequestMapping(value = "/internaute")
 	public String internaute(Model model){
-		if (model.asMap().get("panier") == null) {
-			model.addAttribute("panier", new Panier());
-		}
-		model.addAttribute("categories", metier.listCategories());
-		model.addAttribute("produits", metier.produitsSelectionnes());
+		if(model.asMap().get("panier")==null){ 
+			if(model.asMap().get("panier")==null){ 
+				model.addAttribute("panier", new Panier()); 
+				} 
+			model.addAttribute("categories", metier.listCategories()); 
+			model.addAttribute("produits", metier.produitsSelectionnes()); 
+			
+			}
 		return "internaute";
 	}
 	
@@ -61,6 +66,7 @@ public class AdminInternauteController {
 		model.addAttribute("mc", mc);	
 		model.addAttribute("produits", metier.produitsParMotCle(mc));
 		model.addAttribute("categories", metier.listCategories());
+		model.addAttribute("produits", metier.produitsSelectionnes());
 		return "internaute";
 	}
 	
@@ -92,6 +98,7 @@ public class AdminInternauteController {
 		model.addAttribute("nomCat", idCat);
 		model.addAttribute("produits", metier.produitsParCategorie(idCat));
 		model.addAttribute("categories", metier.listCategories());
+		//model.addAttribute("produits", metier.produitsSelectionnes());
 		return "internaute";
 	}
 

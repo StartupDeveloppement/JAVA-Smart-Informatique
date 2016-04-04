@@ -20,7 +20,7 @@
 		<div class="col-xs-12 forminter text-right bg-info">
 <table class="table table-bordered">
 <tr>
-<td><a href="<%=request.getContextPath()%>/adminInt/panier" class="right_table_btn btn btn_reverse floatright">Panier</a></td>
+<td><a href="<%=request.getContextPath()%>/panier" class="right_table_btn btn btn_reverse floatright">Panier</a></td>
 <td colspan="4">Total</td>
 <td>${panier.total}</td>
 </tr>

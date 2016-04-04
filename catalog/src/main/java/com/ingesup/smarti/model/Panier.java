@@ -8,7 +8,7 @@ import java.util.Map;
 import com.ingesup.smarti.entities.LigneCommande;
 import com.ingesup.smarti.entities.Produit;
 
-public class Panier {
+public class Panier implements Serializable {
 
 private static final long serialVersionUID = 1L;
 	
