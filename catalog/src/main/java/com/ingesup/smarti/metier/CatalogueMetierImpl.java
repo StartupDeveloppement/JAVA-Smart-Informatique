@@ -2,19 +2,18 @@ package com.ingesup.smarti.metier;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 import com.ingesup.smarti.dao.ICatalogueDAO;
 import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
-import com.ingesup.smarti.entities.LigneCommande;
-import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.model.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
 
-@Transactional
+//@Transactional
 public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
 
     private ICatalogueDAO dao;
@@ -82,12 +81,6 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     }
 
     @Override
-    public Commande enregistrerCommande(Panier p, Client c) {
-        // TODO Auto-generated method stub
-        return dao.enregistrerCommande(p, c);
-    }
-
-    @Override
     public Long ajouterCategorie(Categorie c) {
         // TODO Auto-generated method stub
         dao.ajouterCategorie(c);
@@ -114,6 +107,18 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
     public void attribuerRole(Role r, Long userID) {
         dao.attribuerRole(r, userID);
     }
+
+	@Override
+	public Commande enregistrerCommande(Panier p, Client c) {
+		dao.enregistrerCommande(p, c);
+		return null;
+	}
+    
+//    @Override
+//    public Commande enregistrerCommande(Panier p, Client c) {
+//        // TODO Auto-generated method stub
+//        return dao.enregistrerCommande(p, c);
+//    }
 }
 
 

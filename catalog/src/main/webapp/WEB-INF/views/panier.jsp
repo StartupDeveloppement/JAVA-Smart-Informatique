@@ -18,25 +18,25 @@
       <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
-		<form modelAttribute="internaute" action="panier"  method="post"
+		<form modelAttribute="produit" action="panier"  method="get"
 			enctype="multipart/form-data">
 		<c:if test="${panier.size!=0}">
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
 				<th>Désignation</th>
-				<th>Prix</th>
 				<th>Quantité</th>
+				<th>Prix</th>
 				<th>Montant</th>
 			</tr>
-			<c:forEach items="${panier.items}" var="art">
+			<c:forEach items="${panier.articles}" var="art">
 				<tr>
 					<td>${art.produit.idProduit}</td>
 					<td>${art.produit.designation}</td>
-					<td>${art.produit.prix}</td>
 					<td>${art.quantite}</td>
+					<td>${art.produit.prix}</td>
 					<td>${art.quantite*art.produit.prix}</td>
-					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
+					<td><a href="<%=request.getContextPath()%>/adminInt/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
@@ -50,6 +50,10 @@
 </div>
 </div>
 
+<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminternaute text-center bg-info">
+<table class="table table-bordered">
 <tr>
  	 <td colspan="7">
          <a href="<%=request.getContextPath()%>/adminInt/internaute" class="left_table_btn btn btn_reverse floatleft">continue shopping</a>
@@ -61,11 +65,46 @@
 			<img id="imgPanier" src="/resources/images/panier.jpg" onclick="affichePanier()"/>
 			</td> 
 		</tr>
-<table class="table table-bordered">	
-		<tr>
-			<td><input type="submit" value="Enregister Commande" /></td>
-		</tr>
 </table>
+</div>
+</div>
+</div>
+
+<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 formcommande text-center bg-info">
+			<f:form action="enregistrerCommande">
+			<table class="table table-bordered">
+			<tr>
+			<td>
+			<label>Nom</label><br>
+            <input type="text">
+            </td>
+            <td>
+            <label>Adresse</label><br>
+            <input type="text">
+            </td>
+            <td>
+            <label>Ville</label><br>
+            <input type="text">
+            </td>
+            <td>
+            <label>Code Postal</label><br>
+            <input type="text">
+            </td>
+            <td>
+            <label>Téléphone Portable</label><br>
+            <input type="text">
+            </td>
+            <td>
+            <input type="submit" value="Enregister Commande" />
+            </td>
+            </tr>
+        </table>
+     </f:form>
+ </div>
+ </div>
+ </div>
 
 </body>
 </html>

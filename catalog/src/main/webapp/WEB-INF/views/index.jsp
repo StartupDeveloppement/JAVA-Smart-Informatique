@@ -19,11 +19,13 @@
 			<f:form modelAttribute="categorie" action="saveCat" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
+			
 				<tr>
 					<td>ID Catégorie</td>
 					<td><f:input path="idCategorie" /></td>
 					<td><f:errors path="idCategorie" cssClass="errors"></f:errors></td>
 				</tr>
+				
 				<tr>
 					<td>Nom Catégorie</td>
 					<td><f:input path="nomCategorie" /></td>

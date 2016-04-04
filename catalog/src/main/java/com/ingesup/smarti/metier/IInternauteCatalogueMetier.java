@@ -7,8 +7,7 @@ import java.util.List;
 import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
-import com.ingesup.smarti.entities.LigneCommande;
-import com.ingesup.smarti.entities.Panier;
+import com.ingesup.smarti.model.Panier;
 import com.ingesup.smarti.entities.Produit;
 
 public interface IInternauteCatalogueMetier {

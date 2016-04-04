@@ -15,46 +15,57 @@ import javax.persistence.Table;
 @Entity
 @Table(name="COMMANDE")
 public class Commande implements Serializable {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long idCommande;
-    private Date dateCommande;
-    @ManyToOne
-    @JoinColumn(name="idClient")
-    private Client client;
-    @OneToMany
-	@JoinColumn(name = "idCommande")
+private static final long serialVersionUID = 1L;
+	
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO) 
+	private Long idCommande;
+	
+	private Date dateCommande;
+	
+		
+	@ManyToOne @JoinColumn(name="idClient") 
+	private Client client;
+	
+	@OneToMany 
+	@JoinColumn(name="idCommande") 
 	private Collection<LigneCommande> ligneCommandes;
-    
-    public Commande() {
-        super();
-    }
-    
-    public Long getIdCommande() {
-        return idCommande;
-    }
-    public void setIdCommande(Long idCommande) {
-        this.idCommande = idCommande;
-    }
-    public Date getDateCommande() {
-        return dateCommande;
-    }
-    public void setDateCommande(Date dateCommande) {
-        this.dateCommande = dateCommande;
-    }
-    public Collection<LigneCommande> getLigneCommandes() {
-        return ligneCommandes;
-    }
-    public void setItems(Collection<LigneCommande> ligneCommandes) {
-        this.ligneCommandes = ligneCommandes;
-    }
-    public Client getClient() {
-        return client;
-    }
-    public void setClient(Client client) {
-        this.client = client;
-    }
-    
+
+	public Long getIdCommande() {
+		return idCommande;
+	}
+
+	public void setIdCommande(Long idCommande) {
+		this.idCommande = idCommande;
+	}
+
+	public Date getDateCommande() {
+		return dateCommande;
+	}
+
+	public void setDateCommande(Date dateCommande) {
+		this.dateCommande = dateCommande;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Collection<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+
+	public void setLigneCommandes(Collection<LigneCommande> collection) {
+		this.ligneCommandes = collection;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
 
 

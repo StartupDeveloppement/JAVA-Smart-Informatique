@@ -7,12 +7,12 @@
 <title>Enregistrement Command</title>
 </head>
 <body>
-
-<div class="container table-responsive">
+Votre Commande est bien Enregister
+<!-- <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formcategory text-center bg-info">
 			<h3> Smart Informatique </h3> <br>
-			<f:form modelAttribute="client" action="command" method="post"
+			<f:form modelAttribute="client" action="enregistrerCommande" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tr>
@@ -42,13 +42,13 @@
 			
 		</div>
 	</div>
+ -->
 
-
-<div class="container table-responsive">
+<%-- <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formcategory text-center bg-info">
 		<div id="">
-		<f:form modelAttribute="client" action="command" method="post"
+		<f:form modelAttribute="client" action="enregistrerCommande" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
 				<tr>
@@ -56,7 +56,7 @@
 					<th>NOM</th>
 					<th>ADRESSE</th>
 					<th>TELEPHONE PORTABLE</th>
-					<c:forEach items="${clients}" var="cli">
+					<c:forEach items="${enregistrerCommande}" var="cli">
 						<tr>
 							<td>${cli.idClient}</td>
 							<td>${cli.nomClient}</td>
@@ -70,7 +70,7 @@
 		</div>
 		</div>
 		</div>
-</div>
+</div> --%>
 
 </body>
 </html>

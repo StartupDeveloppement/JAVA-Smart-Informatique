@@ -1,22 +1,23 @@
 package com.ingesup.smarti.dao;
 
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
-import com.ingesup.smarti.entities.LigneCommande;
-import com.ingesup.smarti.entities.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
+import com.ingesup.smarti.model.Panier;
 
+@Transactional
 public class CatalogueDAOImpl implements ICatalogueDAO {
     
     @PersistenceContext
@@ -115,19 +116,25 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
         em.persist(r);
     }
 
-    @Override
-    public Commande enregistrerCommande(Panier p, Client c) {
-    	em.persist(c);
-		Commande cmd = new Commande();
-		cmd.setClient(c);
-		cmd.setDateCommande(new Date());
-		cmd.setItems(p.getItems());
-		for(LigneCommande lc:p.getItems()){
-			em.persist(lc);
-		}
-		em.persist(cmd);
+	@Override
+	public Commande enregistrerCommande(Panier p, Client c) {
+		em.persist(c); 
+		Commande cmd=new Commande(); 
+		cmd.setClient(c); 
+		cmd.setLigneCommandes(p.getArticles()); 
+		em.persist(cmd); 
 		return cmd;
-    }
+	}
+
+//    @Override
+//    public Commande enregistrerCommande(Panier p, Client c) {
+//    	em.persist(c); 
+//		Commande cmd=new Commande(); 
+//		cmd.setClient(c); 
+//		cmd.setLigneCommandes(p.getArticles()); 
+//		em.persist(cmd); 
+//		return cmd;
+//    }
 
 }
 
