@@ -40,14 +40,14 @@ public class AdminInternauteController {
 	
 	@RequestMapping(value = "/internaute")
 	public String internaute(Model model){
-		if(model.asMap().get("panier")==null){ 
+		/*if(model.asMap().get("panier")==null){ 
 			if(model.asMap().get("panier")==null){ 
 				model.addAttribute("panier", new Panier()); 
-				} 
+				}*/ 
 			model.addAttribute("categories", metier.listCategories()); 
 			model.addAttribute("produits", metier.produitsSelectionnes()); 
 			
-			}
+			//}
 		return "internaute";
 	}
 	

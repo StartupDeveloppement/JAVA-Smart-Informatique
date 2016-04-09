@@ -21,12 +21,8 @@
 			<table class="table table-bordered">
 			
 				<tr>
-					<td>ID Catégorie</td>
-					<td><f:input path="idCategorie" /></td>
-					<td><f:errors path="idCategorie" cssClass="errors"></f:errors></td>
-				</tr>
-				
-				<tr>
+					${categorie.idCategorie}<f:input type="hidden" path="idCategorie"/>
+					<f:errors path="idCategorie"></f:errors>
 					<td>Nom Catégorie</td>
 					<td><f:input path="nomCategorie" /></td>
 					<td><f:errors path="nomCategorie" cssClass="errors"></f:errors></td>

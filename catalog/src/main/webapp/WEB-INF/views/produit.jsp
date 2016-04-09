@@ -19,12 +19,11 @@
 			<f:form modelAttribute="produit" action="savePro" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
+				
+				
 				<tr>
-					<td>ID Produit</td>
-					<td><f:input path="idProduit" /></td>
-					<td><f:errors path="idProduit" cssClass="errors"></f:errors></td>
-				</tr>
-				<tr>
+					<f:input type="hidden" path="idProduit" />${produit.idProduit}
+					<f:errors path="idProduit" cssClass="errors"></f:errors>
 					<td>Designation</td>
 					<td><f:input path="designation" /></td>
 					<td><f:errors path="designation" cssClass="errors"></f:errors></td>
