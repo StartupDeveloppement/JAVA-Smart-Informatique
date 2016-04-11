@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
 </head>
+
+<a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
 <body>
 
 <div class="container table-responsive">

@@ -20,9 +20,15 @@
 		<div class="col-xs-12 forminter text-right bg-info">
 <table class="table table-bordered">
 <tr>
-<td><a href="<%=request.getContextPath()%>/panier" class="right_table_btn btn btn_reverse floatright">Panier</a></td>
+<!--<c:forEach items="${panier.articles}" var="art">
+<td>
+<a href="<%=request.getContextPath()%>/panier?idProduit=${art.produit.idProduit}&quantite=${art.quantite}">Panier</a>
+</td>
+</c:forEach>-->
 <td colspan="4">Total</td>
 <td>${panier.total}</td>
+<td colspan="4">Size</td>
+<td>${panier.size}</td>
 </tr>
 </table>
 </div>

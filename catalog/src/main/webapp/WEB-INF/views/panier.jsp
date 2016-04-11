@@ -56,7 +56,7 @@
 <table class="table table-bordered">
 <tr>
  	 <td colspan="7">
-         <a href="<%=request.getContextPath()%>/internaute" class="left_table_btn btn btn_reverse floatleft">continue shopping</a>
+         <a href="<%=request.getContextPath()%>/internaute">continue shopping</a>
      </td>
 </tr>    
 
@@ -73,7 +73,7 @@
 <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formcommande text-center bg-info">
-			<f:form action="enregistrerCommande">
+			<f:form action="checkout">
 			<table class="table table-bordered">
 			<tr>
 			<td>
@@ -97,7 +97,8 @@
             <input type="text">
             </td>
             <td>
-            <input type="submit" value="Enregister Commande" />
+            <a href="<%=request.getContextPath()%>/checkout" class="btn">Enregistrer commande</a><br><br>
+            <span class="description">Checkout with multiple address!</span>
             </td>
             </tr>
         </table>

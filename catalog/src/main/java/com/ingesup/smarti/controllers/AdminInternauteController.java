@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 //import org.springframework.validation.BindingResult;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,7 +44,7 @@ public class AdminInternauteController {
 		/*if(model.asMap().get("panier")==null){ 
 			if(model.asMap().get("panier")==null){ 
 				model.addAttribute("panier", new Panier()); 
-				}*/ 
+				}*/
 			model.addAttribute("categories", metier.listCategories()); 
 			model.addAttribute("produits", metier.produitsSelectionnes()); 
 			
@@ -76,22 +77,22 @@ public class AdminInternauteController {
 //		return "panier"; 
 //	}
 	
-	@RequestMapping("/commande") 
-	public String commande(Model model,@RequestParam Panier p,@RequestParam Client c){ 
+	@RequestMapping("/checkout") 
+	public String checkout(Model model,@RequestParam Panier p,@RequestParam Client c){ 
 		model.addAttribute("client", new Client());
 		metier.enregistrerCommande(p, c);	 	
 		return "commande"; 
 	}
 	
-//	@RequestMapping(value="/shopItem" ,method=RequestMethod.GET) 
-//	public String getProduit(@RequestParam("idP") Long idP,Model model){ 
-//		 
-//				 
-//			model.addAttribute("categories", metier.listCategories()); 
-//			model.addAttribute("produit", metier.getProduit(idP));
-//		
-//			return "internaute"; 
-//	}
+	@RequestMapping(value="/shopItem" ,method=RequestMethod.GET) 
+	public String getProduit(@RequestParam("idP") Long idP,Model model){ 
+		 
+				 
+			model.addAttribute("categories", metier.listCategories()); 
+			model.addAttribute("produit", metier.getProduit(idP));
+		
+			return "internaute"; 
+	}
 	
 	@RequestMapping(value="/produitParCat")
 	public String produitParCat(@RequestParam(value="nomCat")Long idCat, Model model) throws IOException{
@@ -139,18 +140,18 @@ public class AdminInternauteController {
 		return "panier";
 	}
 	
-//	@RequestMapping("/shop/panier")
-//	public String ajouterPanier(@RequestParam Long idProduit,
-//			@RequestParam int quantite, Model model) {
-//		Panier panier = null;
-//		if (model.asMap().get("panier") == null) {
-//			panier = new Panier();
-//			model.addAttribute("panier", panier);
-//		} else
-//			panier = (Panier) model.asMap().get("panier");
-//		panier.addItem(metier.getProduit(idProduit), quantite);
-//		model.addAttribute("categories", metier.listCategories());
-//		model.addAttribute("produits", metier.produitsSelectionnes());
-//		return "internaute";
-//	}
+//	@RequestMapping("/shop/ajouterAuPanier") 
+//	public String ajouterPanier(@RequestParam("idP") Long idP,@RequestParam Long idProduit,@RequestParam(defaultValue="1") int quantite,Model model){ 
+//		Panier panier=null; 
+//		if(model.asMap().get("panier")==null){ 
+//			panier=new Panier(); 
+//			model.addAttribute("panier", panier); 
+//			} 
+//		else 
+//			panier=(Panier) model.asMap().get("panier"); 
+//		panier.ajouterArticle(metier.getProduit(idProduit), quantite); 
+//		model.addAttribute("categories", metier.listCategories()); 
+//		model.addAttribute("produit", metier.getProduit(idP)); 
+//		return "panier"; 
+//		} 
 }
