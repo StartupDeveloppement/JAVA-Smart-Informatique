@@ -10,15 +10,13 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
-	<script type="text/javascript" src="/resources/jquery/jquery-1.8.2.js"></script>
-	<script type="text/javascript" src="/resources/js/panier.js"></script>
 </head>
 <body>
 
       <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
-		<form modelAttribute="produit" action="panier"  method="get"
+		<form action="ajouterArticle"  method="post"
 			enctype="multipart/form-data">
 		<c:if test="${panier.size!=0}">
 		<table class="table table-bordered">
@@ -37,6 +35,7 @@
 					<td>${art.produit.prix}</td>
 					<td>${art.quantite*art.produit.prix}</td>
 					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
+					<td><a href="<%=request.getContextPath()%>/editItem?idProduit=${art.produit.idProduit}">Edit</a></td>
 				</tr>
 			</c:forEach>
 			<tr>
@@ -56,56 +55,55 @@
 <table class="table table-bordered">
 <tr>
  	 <td colspan="7">
-         <a href="<%=request.getContextPath()%>/internaute">continue shopping</a>
+         <a href="<%=request.getContextPath()%>/shop">continue shopping</a>
+         <a href="<%=request.getContextPath()%>/internaute">update panier</a>
      </td>
 </tr>    
 
-		<tr>
-			<td colspan="2">
-			<img id="imgPanier" src="/resources/images/panier.jpg" onclick="affichePanier()"/>
-			</td> 
-		</tr>
 </table>
 </div>
 </div>
 </div>
 
+<br>
+<br>
+</br>
+
 <div class="container table-responsive">
 		<div class="row">
-		<div class="col-xs-12 formcommande text-center bg-info">
-			<f:form action="checkout">
+		<div class="col-xs-12 forminternaute text-center bg-info">
+			<f:form action="enregistrerCommande" method="post"
+			enctype="multipart/form-data">
 			<table class="table table-bordered">
-			<tr>
-			<td>
-			<label>Nom</label><br>
-            <input type="text">
-            </td>
-            <td>
-            <label>Adresse</label><br>
-            <input type="text">
-            </td>
-            <td>
-            <label>Ville</label><br>
-            <input type="text">
-            </td>
-            <td>
-            <label>Code Postal</label><br>
-            <input type="text">
-            </td>
-            <td>
-            <label>Téléphone Portable</label><br>
-            <input type="text">
-            </td>
-            <td>
-            <a href="<%=request.getContextPath()%>/checkout" class="btn">Enregistrer commande</a><br><br>
-            <span class="description">Checkout with multiple address!</span>
-            </td>
-            </tr>
-        </table>
-     </f:form>
- </div>
- </div>
- </div>
+			
+				<tr>
+					<td>Nom Client</td>
+					<td><input type="text" path="nomClient" /></td>
+				</tr>
+				<tr>
+					<td>Adresse</td>
+					<td><input type="text" path="adresse" /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" path="email" /></td>
+				</tr>
+				<tr>
+					<td>Téléphone</td>
+					<td><input type="text" path="tel" /></td>
+				</tr>
+				<tr>
+					<td><input type="Submit" value="Enregistrement Commande" /></td>
+				</tr>
+			</table>
+	</f:form>
+		</div>
+			
+		</div>
+	</div>
+<br>
+<br>
+
 
 </body>
 </html>

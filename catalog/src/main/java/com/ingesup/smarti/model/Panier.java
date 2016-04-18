@@ -34,7 +34,8 @@ private static final long serialVersionUID = 1L;
 	public void deleteItem(Long idProduit){
 		articles.remove(idProduit);
 		}
-		public int getSize(){
+	
+	public int getSize(){
 		int nb=0;
 		Collection<LigneCommande> items=getArticles();
 		for(LigneCommande art:items){
@@ -42,4 +43,9 @@ private static final long serialVersionUID = 1L;
 		}
 		return nb;
 		}
+		
+		public void editItem(Long idProduit){
+			articles.merge(idProduit, null, null);
+			}
 }
+			

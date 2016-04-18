@@ -10,8 +10,6 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
-	<script type="text/javascript" src="/resources/jquery/jquery-1.8.2.js"></script>
-	<script type="text/javascript" src="/resources/js/panier.js"></script>
 </head>
 <body>
 
@@ -20,19 +18,14 @@
 		<div class="col-xs-12 forminter text-right bg-info">
 <table class="table table-bordered">
 <tr>
-<!--<c:forEach items="${panier.articles}" var="art">
-<td>
-<a href="<%=request.getContextPath()%>/panier?idProduit=${art.produit.idProduit}&quantite=${art.quantite}">Panier</a>
-</td>
-</c:forEach>-->
+<td><a href="<%=request.getContextPath()%>/panier">Panier</a>
 <td colspan="4">Total</td>
 <td>${panier.total}</td>
 <td colspan="4">Size</td>
 <td>${panier.size}</td>
 </tr>
 </table>
-</div>
-			
+		</div>	
 		</div>
 	</div>
 
@@ -78,21 +71,11 @@
 <br>
 <br>
 	
-
-	
-		<tr>
-			<img alt="" src="/resources/images/panier.jpg"/></td>
-		</tr> 
-	
-<br>
-<br>
-<br>
-	
 	<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
 		<table class="table table-bordered">
-				
+		
 		<tr>
 			<th>DESIGNATION</th>
 			<th>DESCRIPTION</th>
@@ -108,7 +91,7 @@
 				<td>${pro.prix}</td>
 				<td><img src="photoPro?idP=${pro.idProduit}"></td>
 				<td colspan="2">
-						<form modelAttribute="internaute" action="panier"  method="get"
+						<form action="ajouterArticle"  method="post"
 			enctype="multipart/form-data">
 							<input type="hidden" value="${pro.idProduit}" name="idProduit">
 							<input type="text" value="1" name="quantite"> <input
