@@ -79,6 +79,7 @@
 		<tr>
 			<th>DESIGNATION</th>
 			<th>DESCRIPTION</th>
+			<th>STOCK</th>
 			<th>CATEGORIE</th>
 			<th>PRIX</th>
 			<th>PHOTO</th>
@@ -87,6 +88,7 @@
 			<tr>
 				<td>${pro.designation}</td>
 				<td>${pro.description}</td>
+				<td>${pro.quantite}</td>
 				<td>${pro.categorie.nomCategorie}</td>
 				<td>${pro.prix}</td>
 				<td><img src="photoPro?idP=${pro.idProduit}"></td>
@@ -94,9 +96,9 @@
 						<form action="ajouterArticle"  method="post"
 			enctype="multipart/form-data">
 							<input type="hidden" value="${pro.idProduit}" name="idProduit">
-							<input type="text" value="1" name="quantite"> <input
-								type="submit" value="Ajouter au panier">
-						</form>
+							<input type="text" value="1" name="quantite"}> 
+							<input type="submit" value="Ajouter au panier">
+							</form>
 			</tr>
 		</c:forEach>
 		</table>

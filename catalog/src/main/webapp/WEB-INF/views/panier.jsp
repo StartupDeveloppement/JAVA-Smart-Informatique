@@ -30,12 +30,18 @@
 			<c:forEach items="${panier.articles}" var="art">
 				<tr>
 					<td>${art.produit.idProduit}</td>
-					<td>${art.produit.designation}</td>
-					<td>${art.quantite}</td>
+					<td>${art.produit.designation}</td>	
+					<td>		
+  <a href="<%=request.getContextPath()%>/plus?idProduit=${art.produit.idProduit}">+</a>
+					${art.quantite}
+  <a href="<%=request.getContextPath()%>/minus?idProduit=${art.produit.idProduit}">-</a>
+ 
+</td>
+
 					<td>${art.produit.prix}</td>
 					<td>${art.quantite*art.produit.prix}</td>
 					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
-					<td><a href="<%=request.getContextPath()%>/editItem?idProduit=${art.produit.idProduit}">Edit</a></td>
+				
 				</tr>
 			</c:forEach>
 			<tr>
@@ -55,8 +61,7 @@
 <table class="table table-bordered">
 <tr>
  	 <td colspan="7">
-         <a href="<%=request.getContextPath()%>/shop">continue shopping</a>
-         <a href="<%=request.getContextPath()%>/internaute">update panier</a>
+         <a href="<%=request.getContextPath()%>/internaute">continue shopping</a>
      </td>
 </tr>    
 

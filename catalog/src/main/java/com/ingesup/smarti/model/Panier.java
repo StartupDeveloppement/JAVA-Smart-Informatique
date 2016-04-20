@@ -15,10 +15,11 @@ private static final long serialVersionUID = 1L;
 	private Map<Long, LigneCommande> articles=new HashMap<Long, LigneCommande>();
 	public void ajouterArticle(Produit p,int quantite){
 	LigneCommande art=articles.get(p.getIdProduit());
-	if(art!=null) art.setQuantite(art.getQuantite()+quantite);
-	else 
-		articles.put(p.getIdProduit(), new LigneCommande(p, quantite));
-	}
+	if(art!=null && art.getQuantite()<p.getQuantite()) art.setQuantite(art.getQuantite()+quantite);
+	else
+		art.setQuantite(art.getQuantite());
+		//articles.put(p.getIdProduit(), new LigneCommande(p, quantite));
+}
 	public Collection<LigneCommande> getArticles(){
 	return articles.values();
 	}
@@ -44,8 +45,24 @@ private static final long serialVersionUID = 1L;
 		return nb;
 		}
 		
-		public void editItem(Long idProduit){
-			articles.merge(idProduit, null, null);
-			}
+	public void plus(Produit p,int quantite){
+		LigneCommande art=articles.get(p.getIdProduit());
+		//int art=0;
+		//if(art.getQuantite()>1)
+		if(art.getQuantite()<p.getQuantite())
+			art.setQuantite(art.getQuantite()+quantite);
+		else
+			art.setQuantite(art.getQuantite());
+		
+	}
+	public void minus(Produit p,int quantite){
+		LigneCommande art=articles.get(p.getIdProduit());
+		//int art=0;
+		if(art.getQuantite()>1)
+			art.setQuantite(art.getQuantite()-quantite);
+		else
+			art.setQuantite(art.getQuantite());
+		
+	}
 }
 			

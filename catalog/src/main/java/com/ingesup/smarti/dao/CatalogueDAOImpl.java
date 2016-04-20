@@ -67,7 +67,7 @@ public class CatalogueDAOImpl implements ICatalogueDAO {
 
     @Override
     public List<Produit> produitsParMotCle(String mc) {
-        Query req = em.createQuery("select p from Produit p where p.designation like :x or p.description like :x and p.selected=true");
+        Query req = em.createQuery("select p from Produit p where p.designation like :x and p.selected=true");
         req.setParameter("x", "%"+mc+"%");
         return req.getResultList();
     }
