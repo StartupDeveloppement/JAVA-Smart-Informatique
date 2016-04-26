@@ -10,8 +10,16 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
+	<style>
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #E6E6FA; 
+}
+</style>
 </head>
 <body>
+
 
 <div class="container table-responsive">
 		<div class="row">
@@ -96,7 +104,7 @@
 						<form action="ajouterArticle"  method="post"
 			enctype="multipart/form-data">
 							<input type="hidden" value="${pro.idProduit}" name="idProduit">
-							<input type="text" value="1" name="quantite"}> 
+							<input type="text" value="1" name="quantite"> 
 							<input type="submit" value="Ajouter au panier">
 							</form>
 			</tr>

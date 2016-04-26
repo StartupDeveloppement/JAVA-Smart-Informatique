@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ingesup.smarti.entities.Client;
+import com.ingesup.smarti.entities.Commande;
 import com.ingesup.smarti.entities.LigneCommande;
 import com.ingesup.smarti.entities.Produit;
 
@@ -16,9 +18,10 @@ private static final long serialVersionUID = 1L;
 	public void ajouterArticle(Produit p,int quantite){
 	LigneCommande art=articles.get(p.getIdProduit());
 	if(art!=null && art.getQuantite()<p.getQuantite()) art.setQuantite(art.getQuantite()+quantite);
-	else
-		art.setQuantite(art.getQuantite());
-		//articles.put(p.getIdProduit(), new LigneCommande(p, quantite));
+	else 
+		/*System.out.println("no stock");*/
+		//art.setQuantite(art.getQuantite());
+		articles.put(p.getIdProduit(), new LigneCommande(p, quantite));
 }
 	public Collection<LigneCommande> getArticles(){
 	return articles.values();
@@ -64,5 +67,6 @@ private static final long serialVersionUID = 1L;
 			art.setQuantite(art.getQuantite());
 		
 	}
+
 }
 			

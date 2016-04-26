@@ -15,69 +15,60 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USERS")
 public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long idUser;
-    private String userName;
-    private String password;
-    private boolean activated;
-    @OneToMany // association n'est pas bidirectionnelle, il faut donc preciser
-                // la foreign key ici, avec @JoinColumn(name="user_id")
-    @JoinColumn(name = "user_id")
-    private Collection<Role> roles;
+	
+	@Id 
+	@GeneratedValue (strategy=GenerationType.AUTO)
+	private Long idUser;
+	
+	
+	private String userName;
+	
+	private String password;
+	
+	private boolean actived;
+	
+	@OneToMany(mappedBy="user")
+	private Collection<Role> roles;
 
-    public Long getIdUser() {
-        return idUser;
-    }
+	public Long getIdUser() {
+		return idUser;
+	}
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public boolean isActivated() {
-        return activated;
-    }
+	public boolean isActived() {
+		return actived;
+	}
 
-    public void setActivated(boolean activated) {
-        this.activated = activated;
-    }
+	public void setActived(boolean actived) {
+		this.actived = actived;
+	}
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
+	public Collection<Role> getRoles() {
+		return roles;
+	}
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
-    public User() {
-        super();
-    }
-
-    public User(String userName, String password, boolean activated) {
-        super();
-        this.userName = userName;
-        this.password = password;
-        this.activated = activated;
-    }
-
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
 }
 
 

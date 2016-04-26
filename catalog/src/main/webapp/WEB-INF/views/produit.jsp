@@ -9,15 +9,32 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css">
+	<style>
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #E6E6FA; 
+}
+</style>
 </head>
 
-<a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
 <body>
-
+<div class="container table-responsive">
+		<div class="row">
+		<div class="col-xs-12 forminter text-center bg-info">
+ <ul>
+    <li><a href="<%=request.getContextPath()%>/adminCat/index"> Categories</a></li>
+    <li><a href="<%=request.getContextPath()%>/adminPro/produit"> Produits</a></li>
+    <li><a href="<%=request.getContextPath()%>/shop">Site E-Commerce</a></li>
+ </ul>
+ </div>
+ </div>
+ </div>
+ 
 <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formproduit text-center bg-info">
-			<h3> Smart Informatique </h3> <br>
+			<h4> PRODUITS </h4> <br>
 			<f:form modelAttribute="produit" action="savePro" method="post"
 			enctype="multipart/form-data">
 			<table class="table table-bordered">
@@ -59,7 +76,7 @@
 					<td>Photo</td>
 					<td>
 					<c:if test="${produit.idProduit!=null}">
-					<img src="photoPro?idPro=${produit.idProduit}"/>
+					<img src="photoPro?idP=${produit.idProduit}"/>
 					</c:if>
 					</td>
 					<td><input type="file" name="file" /></td>

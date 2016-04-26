@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 //import java.util.List;
 
+import javax.validation.Valid;
+
 //import javax.servlet.http.HttpSession;
 //import javax.validation.Valid;
 
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 //import org.springframework.ui.ModelMap;
 //import org.springframework.validation.BindingResult;
 //import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +27,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 //import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.ingesup.smarti.entities.Categorie;
 //import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
-import com.ingesup.smarti.model.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.metier.IInternauteCatalogueMetier;
+import com.ingesup.smarti.model.Panier;
 
 @Controller
 //@RequestMapping(value = "/adminInt")
@@ -42,14 +47,14 @@ public class AdminInternauteController {
 	
 	@RequestMapping(value = "/internaute")
 	public String internaute(Model model){
-		/*if(model.asMap().get("panier")==null){ 
+		if(model.asMap().get("panier")==null){ 
 			if(model.asMap().get("panier")==null){ 
 				model.addAttribute("panier", new Panier()); 
-				}*/
+				}
 			model.addAttribute("categories", metier.listCategories()); 
 			model.addAttribute("produits", metier.produitsSelectionnes()); 
 			
-			//}
+			}
 		return "internaute";
 	}
 	
@@ -68,7 +73,6 @@ public class AdminInternauteController {
 		model.addAttribute("mc", mc);	
 		model.addAttribute("produits", metier.produitsParMotCle(mc));
 		model.addAttribute("categories", metier.listCategories());
-		//model.addAttribute("produits", metier.produitsSelectionnes());
 		return "internaute";
 	}
 	
@@ -78,20 +82,11 @@ public class AdminInternauteController {
 		return "panier"; 
 	}
 	
-	@RequestMapping(value="/enregistrerCommande") 
-	public String enregistrerCommande(Model model,@RequestParam Panier p,@RequestParam Client c){ 
-		model.addAttribute("client", new Client());
-		metier.enregistrerCommande(p, c);	 	
-		return "enregistrerCommande"; 
-	}
-	
-	@RequestMapping(value="/shopItem" ,method=RequestMethod.GET) 
-	public String getProduit(@RequestParam("idP") Long idP,Model model){ 
-		 
-			model.addAttribute("categories", metier.listCategories()); 
-			model.addAttribute("produit", metier.getProduit(idP));
-		
-			return "produitdetails"; 
+	@RequestMapping("/commande") 
+	public String commande(Model model){ 
+//		model.addAttribute("client", new Client());
+//		metier.enregistrerCommande(p, c);	 	
+		return"commande"; 
 	}
 	
 	@RequestMapping(value="/produitParCat")
@@ -99,7 +94,6 @@ public class AdminInternauteController {
 		model.addAttribute("nomCat", idCat);
 		model.addAttribute("produits", metier.produitsParCategorie(idCat));
 		model.addAttribute("categories", metier.listCategories());
-		//model.addAttribute("produits", metier.produitsSelectionnes());
 		return "internaute";
 	}
 
@@ -169,7 +163,7 @@ public class AdminInternauteController {
 		return "panier"; 
 		} 
 	
-	/*@RequestMapping(value="/shop/ajouterArticle") 
+	@RequestMapping(value="/shop/ajouterArticle") 
 	public String ajouter(@RequestParam("idP") Long idP,@RequestParam Long idProduit,@RequestParam(defaultValue="1") int quantite,Model model){ 
 		Panier panier=null; 
 		if(model.asMap().get("panier")==null){ 
@@ -182,5 +176,6 @@ public class AdminInternauteController {
 		model.addAttribute("categories", metier.listCategories()); 
 		model.addAttribute("produit", metier.getProduit(idP)); 
 		return "panier"; 
-		} */
+		} 
+
 }

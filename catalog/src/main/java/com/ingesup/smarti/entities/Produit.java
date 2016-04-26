@@ -20,8 +20,10 @@ public class Produit implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idProduit;
     @NotEmpty
-    @Size(min=4, max=15)
+    @Size(min=4, max=10)
     private String designation;
+    @NotEmpty
+    @Size(min=4, max=60)
     private String description;
     private double prix;
     private int quantite;

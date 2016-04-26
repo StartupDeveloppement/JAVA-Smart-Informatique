@@ -1,6 +1,6 @@
 package com.ingesup.smarti.dao;
 
-import java.util.Collection;
+//import java.util.Collection;
 import java.util.List;
 
 import com.ingesup.smarti.entities.Categorie;
@@ -30,9 +30,6 @@ public interface ICatalogueDAO {
     public void supprimerProduit(Long idP);
     public void modifierProduit(Produit p);
     
-    public void ajouterUser(User u);
-    public void attribuerRole(Role r, Long userID);
-
     public Commande enregistrerCommande(Panier p, Client c);
 
 }

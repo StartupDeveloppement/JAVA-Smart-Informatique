@@ -15,7 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="COMMANDE")
 public class Commande implements Serializable {
-private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO) 
@@ -24,7 +25,8 @@ private static final long serialVersionUID = 1L;
 	private Date dateCommande;
 	
 		
-	@ManyToOne @JoinColumn(name="idClient") 
+	@ManyToOne 
+	@JoinColumn(name="idClient") 
 	private Client client;
 	
 	@OneToMany 
@@ -66,6 +68,19 @@ private static final long serialVersionUID = 1L;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public Commande() {
+		super();
+	}
+
+	public Commande(Long idCommande, Date dateCommande, Client client, Collection<LigneCommande> ligneCommandes) {
+		super();
+		this.idCommande = idCommande;
+		this.dateCommande = dateCommande;
+		this.client = client;
+		this.ligneCommandes = ligneCommandes;
+	}
+	
 }
 
 

@@ -1,5 +1,16 @@
 @CHARSET "UTF-8";
 
+
+div.cadre{
+	border: 1px dotted gray;
+	width: 1300px;
+	height: 100%;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 100px;
+	background-color: lavender;
+	background-size: 800% auto;
+}
 .formcategory {
 	display: block;
 	width: 700px;

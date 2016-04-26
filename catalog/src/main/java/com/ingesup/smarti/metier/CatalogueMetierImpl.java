@@ -1,6 +1,9 @@
 package com.ingesup.smarti.metier;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
 
 //import org.springframework.transaction.annotation.Transactional;
 
@@ -8,10 +11,10 @@ import com.ingesup.smarti.dao.ICatalogueDAO;
 import com.ingesup.smarti.entities.Categorie;
 import com.ingesup.smarti.entities.Client;
 import com.ingesup.smarti.entities.Commande;
-import com.ingesup.smarti.model.Panier;
 import com.ingesup.smarti.entities.Produit;
 import com.ingesup.smarti.entities.Role;
 import com.ingesup.smarti.entities.User;
+import com.ingesup.smarti.model.Panier;
 
 //@Transactional
 public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
@@ -98,27 +101,12 @@ public class CatalogueMetierImpl implements IAdminCategorieCatalogueMetier {
         dao.modifierCategorie(c);
     }
 
-    @Override
-    public void ajouterUser(User u) {
-        dao.ajouterUser(u);
-    }
-
-    @Override
-    public void attribuerRole(Role r, Long userID) {
-        dao.attribuerRole(r, userID);
-    }
 
 	@Override
 	public Commande enregistrerCommande(Panier p, Client c) {
-		dao.enregistrerCommande(p, c);
-		return null;
+		return dao.enregistrerCommande(p, c);
 	}
-    
-//    @Override
-//    public Commande enregistrerCommande(Panier p, Client c) {
-//        // TODO Auto-generated method stub
-//        return dao.enregistrerCommande(p, c);
-//    }
+
 }
 
 
