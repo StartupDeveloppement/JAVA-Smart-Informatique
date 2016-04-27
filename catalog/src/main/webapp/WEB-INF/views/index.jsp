@@ -25,7 +25,7 @@ body {
  <ul>
     <li><a href="<%=request.getContextPath()%>/adminCat/index"> Categories</a></li>
     <li><a href="<%=request.getContextPath()%>/adminPro/produit">Produits</a></li>
-    <li><a href="<%=request.getContextPath()%>/shop">Site E-Commerce</a></li>
+    <li><a href="<%=request.getContextPath()%>/boutique">Site E-Commerce</a></li>
  </ul>
  </div>
  </div>
@@ -60,7 +60,7 @@ body {
 					<td><input type="file" name="file" /></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Save" /></td>
+					<td><input type="submit" value="Enregistrer" /></td>
 				</tr>
 			</table>
 	</f:form>
@@ -90,8 +90,8 @@ body {
 							<td>${cat.nomCategorie}</td>
 							<td>${cat.description}</td>
 							<td><img src="photoCat?idCat=${cat.idCategorie}"></td>
-							<td><a href="deleteCat?idCat=${cat.idCategorie}">Delete</a></td>
-							<td><a href="editCat?idCat=${cat.idCategorie}">Edit</a></td>
+							<td><a href="deleteCat?idCat=${cat.idCategorie}">Supprimer</a></td>
+							<td><a href="editCat?idCat=${cat.idCategorie}">Modifier</a></td>
 						</tr>
 					</c:forEach>
 				</tr>

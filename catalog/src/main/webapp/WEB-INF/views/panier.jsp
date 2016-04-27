@@ -48,7 +48,7 @@ body {
 
 					<td>${art.produit.prix}</td>
 					<td>${art.quantite*art.produit.prix}</td>
-					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Delete</a></td>
+					<td><a href="<%=request.getContextPath()%>/deleteItem?idProduit=${art.produit.idProduit}">Supprimer</a></td>
 					
 				</tr>
 			</c:forEach>
@@ -70,7 +70,7 @@ body {
 <table class="table table-bordered">
 <tr>
  	 <td colspan="7">
-         <a href="<%=request.getContextPath()%>/shop">continue shopping</a>
+         <a href="<%=request.getContextPath()%>/shop">Continuer Achat</a>
      </td>
 </tr>    
 
@@ -79,7 +79,7 @@ body {
 </div>
 </div>
 
-<div class="container table-responsive">
+<%-- <div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
 <table class="table table-bordered">
@@ -92,7 +92,7 @@ body {
 </table>
 </div>
 </div>
-</div>
+</div> --%>
 
 <br>
 <br>

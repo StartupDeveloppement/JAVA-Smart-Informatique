@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,7 +35,7 @@ body {
 </div>
 </div>
 				
-<%-- <div class="container table-responsive">
+<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 forminternaute text-center bg-info">
 			<f:form action="saveCli" method="post"
@@ -77,11 +77,11 @@ body {
 		</div>
 			
 		</div>
-	</div> --%>
+	</div>
 <br>
 <br>
 
-<%-- <div class="container table-responsive">
+<div class="container table-responsive">
 		<div class="row">
 		<div class="col-xs-12 formcategory text-center bg-info">
 		<div id="">
@@ -107,7 +107,7 @@ body {
 		</div>
 		</div>
 		</div>
-</div> --%>
+</div>
 
 </body>
-</html>
+</html> --%>

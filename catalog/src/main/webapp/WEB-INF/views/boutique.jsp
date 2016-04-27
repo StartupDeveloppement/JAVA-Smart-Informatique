@@ -23,7 +23,7 @@ body {
 		<div class="row">
 		<div class="col-xs-12 forminter text-center bg-info">
  <ul>
-    <li><a href="<%=request.getContextPath()%>/shop"> Acheter Online</a></li>
+    <li><a href="<%=request.getContextPath()%>/shop"> Achat en ligne</a></li>
  </ul>
  </div>
  </div>

@@ -28,7 +28,7 @@ body {
  <ul>
     <li><a href="<%=request.getContextPath()%>/adminCat/index"> Categories</a></li>
     <li><a href="<%=request.getContextPath()%>/adminPro/produit"> Produits</a></li>
-    <li><a href="<%=request.getContextPath()%>/shop">Site E-Commerce</a></li>
+    <li><a href="<%=request.getContextPath()%>/boutique">Site E-Commerce</a></li>
  </ul>
  </div>
  </div>
